@@ -1,0 +1,39 @@
+<%- include('../partials/header', { pageTitle: pageTitle }) %>
+<div class="card" style="max-width: 600px; margin: 1.5rem auto;">
+    <h2>Formulir Entri Buku Baru</h2>
+    <form action="/buku/tambah" method="POST">
+        <div style="margin-bottom: 1rem;">
+            <label for="judul">Judul Buku:</label><br>
+            <input type="text" id="judul" name="judul" required style="width: 100%; padding: 0.5rem;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="penulis">Penulis:</label><br>
+            <input type="text" id="penulis" name="penulis" required style="width: 100%; padding: 0.5rem;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="kategori">Kategori:</label><br>
+            <select id="kategori" name="kategori" required style="width: 100%; padding: 0.5rem;">
+                <option value="">-- Pilih Kategori --</option>
+                <option value="Buku Teks">Buku Teks</option>
+                <option value="Referensi">Referensi</option>
+                <option value="Fiksi">Fiksi</option>
+                <option value="Jurnal">Jurnal</option>
+            </select>
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="tahun_terbit">Tahun Terbit:</label><br>
+            <input type="number" id="tahun_terbit" name="tahun_terbit" min="1900" required style="width: 100%; padding: 0.5rem;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="stok">Jumlah Stok:</label><br>
+            <input type="number" id="stok" name="stok" min="0" required style="width: 100%; padding: 0.5rem;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="tanggal_masuk">Tanggal Masuk:</label><br>
+            <input type="date" id="tanggal_masuk" name="tanggal_masuk" required style="width: 100%; padding: 0.5rem;">
+        </div>
+        <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1.2rem; background: #0284c7; color: white; border: none; border-radius: 4px; cursor: pointer;">Simpan ke Basis Data</button>
+        <a href="/buku" style="margin-left: 1rem; color: #64748b;">Batal</a>
+    </form>
+</div>
+<%- include('../partials/footer') %>

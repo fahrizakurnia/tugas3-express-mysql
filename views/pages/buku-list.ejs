@@ -1,0 +1,43 @@
+<%- include('../partials/header', { pageTitle: pageTitle }) %>
+<div class="card" style="margin-top: 1.5rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2>Data Buku Perpustakaan</h2>
+        <a href="/buku/tambah" class="btn btn-primary" style="padding: 0.5rem 1rem; text-decoration: none; background: #0284c7; color: white; border-radius: 4px;">+ Tambah Buku Baru</a>
+    </div>
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead style="background: #f8fafc;">
+            <tr>
+                <th>ID</th>
+                <th>Judul Buku</th>
+                <th>Penulis</th>
+                <th>Kategori</th>
+                <th>Tahun</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (bukuList.length === 0) { %>
+                <tr><td colspan="7" style="text-align: center;">Belum ada data buku di basis data.</td></tr>
+            <% } else { %>
+                <% bukuList.forEach(item => { %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><strong><%= item.judul %></strong></td>
+                        <td><%= item.penulis %></td>
+                        <td><%= item.kategori %></td>
+                        <td><%= item.tahun_terbit %></td>
+                        <td><%= item.stok %> Unit</td>
+                        <td>
+                            <a href="/buku/edit/<%= item.id %>" style="color: #0284c7; margin-right: 0.5rem;">Edit</a>
+                            <form action="/buku/hapus/<%= item.id %>" method="POST" style="display: inline;" onsubmit="return confirm('Yakin ingin menghapus buku ini?');">
+                                <button type="submit" style="color: #ef4444; background: none; border: none; cursor: pointer; text-decoration: underline;">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<%- include('../partials/footer') %>
